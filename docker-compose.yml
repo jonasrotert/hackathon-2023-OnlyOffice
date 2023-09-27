@@ -1,0 +1,13 @@
+version: '3'
+services:
+  onlyoffice-documentserver:
+    image: onlyoffice/documentserver-de
+    volumes:
+      - ./config/default.json:/etc/onlyoffice/documentserver/default.json
+      - ./config/ds-example.conf:/etc/supervisor/conf.d/ds-example.conf
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - JWT_SECRET=my_jwt_secret
+  
